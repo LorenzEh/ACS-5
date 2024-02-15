@@ -23,10 +23,10 @@ Request data from the ACS-5 API, calculate the CVs, and create a GeoJSON data fr
 The function takes 5 inputs:
 
 1. **year:**
-   - *Italicized Text:* The ACS-5 data should be interpreted as a measurement covering the entirety of the specified time range rather than representing a single point within that period (U.S. Census Bureau, 2020, p. 22). For instance, if you input the year 2019, you're obtaining data for the period spanning from 2015 to 2019. Therefore, it's inappropriate to consider this data as solely representative of the individual years 2015, 2016, 2017, 2018, or 2019; rather, it should be understood as reflecting the entire duration.
+   - The ACS-5 data should be interpreted as a measurement covering the entirety of the specified time range rather than representing a single point within that period (U.S. Census Bureau, 2020, p. 22). For instance, if you input the year 2019, you're obtaining data for the period spanning from 2015 to 2019. Therefore, it's inappropriate to consider this data as solely representative of the individual years 2015, 2016, 2017, 2018, or 2019; rather, it should be understood as reflecting the entire duration.
 
 2. **variables:**
-   - *Italicized Text:* Variables are entered as a list, where each variable is followed by a user-defined custom name. This custom name, entered after the original variable name, can be chosen freely by the user. Utilizing custom names aids in distinguishing between variables, enhancing clarity and organization.
+   - Variables are entered as a list, where each variable is followed by a user-defined custom name. This custom name, entered after the original variable name, can be chosen freely by the user. Utilizing custom names aids in distinguishing between variables, enhancing clarity and organization.
 
 3. **include_moe_columns:**
    - Set True to include MOE columns, else they are not included in the data frame.
@@ -50,7 +50,7 @@ The function will first print the number of rows requested from the API. Convers
 3. Number of estimates which are zero or missing (percent of estimates zero or missing and total number of estimates which are zero)
 4. Percent of CVs > 30
 
-*Italicized Text:* The assessment of U.S. Census data quality involves the utilization of Margin of Errors (MOEs). The U.S. Census Bureau provides MOEs of each estimation at a confidence level of 90%. The MOEs can easily be transformed to Standard Errors (SEs) by dividing the MOEs by 1.645. Subsequently, the Coefficients of Variation (CVs) can be computed by dividing the SEs by the estimate and multiplying it with 100. (U.S. Census Bureau, 2020, p. 55)
+The assessment of U.S. Census data quality involves the utilization of Margin of Errors (MOEs). The U.S. Census Bureau provides MOEs of each estimation at a confidence level of 90%. The MOEs can easily be transformed to Standard Errors (SEs) by dividing the MOEs by 1.645. Subsequently, the Coefficients of Variation (CVs) can be computed by dividing the SEs by the estimate and multiplying it with 100. (U.S. Census Bureau, 2020, p. 55)
 
 Given the nature of many of the ACS-5 variables as rate data or percentage which frequently have 0 as an estimate, division-by-0 errors might occur when calculating the CVs. Therefore, the percentage of CVs > 30 is calculated by dividing the Count of CVs > 30 by the Count of Estimates not zero or missing:
 
@@ -62,7 +62,7 @@ $$Count\\ of\\ CVs > 30 = \\sum_{i = 1}^{n}\\left\\{ \\begin{matrix} 1\\ if\\ df
 
 And Count of Estimates not zero or missing being:
 
-$$Count\\ of\\ Estimates\\ not\\ zero\\ or\\ missing = \\sum_{i = 1}^{n}\\left\\{ \\begin{matrix} 1\\ if\\ df\\left[var\\right]_{i} = null\\ or\\ df\\left[var\\right]_{i} = 0\\\\ 0\\ otherwise \\\\ \\end{matrix} \\right.$$
+$$Count\\ of\\ Estimates\\ not\\ zero\\ or\\ missing = \sum_{i=1}^{n} \left\{ \begin{array}{ll} 1 & \text{if } df[var]_{i} = \text{null or } df[var]_{i} = 0 \\ 0 & \text{otherwise} \end{array} \right.$$
 
 The example output shows that the total number of missing values and estimates which have zero as value is split between “Percent of Missing Values” and “Percent of Estimates zero or missing”. This gives a sense of how many CVs were calculated without running into a division-by-0 error:
 
