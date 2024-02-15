@@ -1,4 +1,4 @@
-<h1>U.S. County-Level Data Retrieval from the ACS-5 API & basic Data Exploration</h1>
+<h1>U.S. County-Level Data Retrieval from the ACS-5 API & Basic Data Exploration</h1>
 
 
 <h2>Description</h2>
