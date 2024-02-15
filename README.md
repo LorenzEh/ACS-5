@@ -62,7 +62,7 @@ $$Count\\ of\\ CVs > 30 = \\sum_{i = 1}^{n}\\left\\{ \\begin{matrix} 1\\ if\\ df
 
 And Count of Estimates not zero or missing being:
 
-$$Count\\ of\\ Estimates\\ not\\ zero\\ or\\ missing = \sum_{i=1}^{n} \left\{ \begin{array}{ll} 1 & \text{if } df[var]_{i} = \text{null or } df[var]_{i} = 0 \\ 0 & \text{otherwise} \end{array} \right.$$
+$$Count\\ of\\ Estimates\\ not\\ zero\\ or\\ missing = \\sum_{i=1}^{n} \\left\\{ \\begin{array}{ll} 1 & \\text{if } df[var]_{i} = \\text{null or } df[var]_{i} = 0 \\\\ 0 & \\text{otherwise} \\end{array} \\right.$$
 
 The example output shows that the total number of missing values and estimates which have zero as value is split between “Percent of Missing Values” and “Percent of Estimates zero or missing”. This gives a sense of how many CVs were calculated without running into a division-by-0 error:
 
