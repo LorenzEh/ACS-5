@@ -9,8 +9,8 @@ The initial function serves as the primary tool for users, facilitating the retr
 #### *There are three prerequisites necessary for the proper functioning of the code:*
 
 1. A valid API Key (insert in Line 75 & 79).
-2. A corresponding shapefile for the requested years (insert file path in line 171)
-3. The libraries used are installed.
+2. A corresponding shapefile for the requested years (insert file path in line 171).
+3. The libraries used in the code are installed.
 4. (While not mandatory for the functionality of the functions, possessing a basic understanding of ACS-5 is highly beneficial.)
 
 Once these preliminary steps are satisfied, you can proceed to visit [https://api.census.gov/data/2019/acs/acs5/subject/variables.json](https://api.census.gov/data/2021/acs/acs5/subject/variables.json) (adjusting the year as needed) to select and explore the variables of interest.
