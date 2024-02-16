@@ -7,8 +7,11 @@ from sklearn.preprocessing import StandardScaler
 import geopandas as gpd
 plt.rcParams['figure.figsize'] = [15, 15]
 
+# =============================================================================
+# ---------------------------------FUNCTION 1----------------------------------
+# =============================================================================
+
 def fetch_data(year, variables, include_moe_columns=False, include_cv_columns=False, states=None):
-    
     r"""
     
 Request data from the ACS-5 API, check the CVs and create a GeoJSON data frame.
@@ -54,7 +57,6 @@ Output:
         2.) Data Frame
         GeoJSON data frame with the columns requested and "Name", "FIPS" and "geometry column".
 """
-    
     try:
         # Extract variable names and display names from the input list
         variable_names = variables[::2]
@@ -181,10 +183,12 @@ Output:
 
     except Exception as e:
         print("An error occurred:", e)
-
+        
+# =============================================================================
+# ---------------------------------FUNCTION 2----------------------------------
+# =============================================================================
 
 def boxplot(df):
-    
     """
     use boxplot(df) to create a boxplot for each variable which contains estimates
     """
@@ -206,8 +210,11 @@ def boxplot(df):
     except Exception as e:
         print("An error occurred:", e)
 
+# =============================================================================
+# ---------------------------------FUNCTION 3----------------------------------
+# =============================================================================
+
 def plot_correlation_matrix(data):
-    
     """
     use plot_correlation_matrix(df) to create a correlation matrix with each variable which contains estimates
     """
@@ -252,7 +259,9 @@ def plot_correlation_matrix(data):
     except Exception as e:
         print("An error occurred:", e)
 
-# Basic mapping: 
+# =============================================================================
+# ---------------------------------FUNCTION 4----------------------------------
+# =============================================================================
 
 def check_plot(df, col):
     """
@@ -358,7 +367,9 @@ boxplot(df)
 plot_correlation_matrix(df)
 check_plot(df, "Less than High School")
 
-# extra function to calculate the aggregated CVs
+# =============================================================================
+# ---------------------------------EXTRA FUNCTION------------------------------
+# =============================================================================
 
 def calculate_aggregated_cv(df):
     cv_results = {}
