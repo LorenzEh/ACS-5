@@ -124,7 +124,7 @@ $$Z = \\frac{(x - \\overline{x})}{\\sigma(x)}$$
 This involves calculating the standardized values ($Z$) by subtracting the variable mean ($\overline{x}$) from the variable value ($x$) and dividing it by its standard deviation ($\sigma(\text{x}))$.
 
 ### *Output:*
-Scatterplot matrix of the standardized variables, with the distribution of each variable in the diagonale:
+Scatterplot matrix of the standardized variables, with the distribution of each variable in the diagonale.
 
 ![image](https://github.com/LorenzEh/ACS-5/assets/113586171/962bf168-61bc-42a9-b5a1-97f37b7281c0)
 
@@ -141,7 +141,7 @@ Call the function with a single variable to get insights of the spatial distribu
 
 
 ### *Output:*
-Individual maps for contiguous USA, Alaska, Hawaii, and Puerto Rico and a color bar legend.
+Individual maps for contiguous USA, Alaska, Hawaii, and Puerto Rico and a color bar legend of the spatial distribution of the variable of interest.
 
 ![map1](https://github.com/LorenzEh/ACS-5/assets/113586171/180e673c-566a-466b-a9fb-5498ec48cbef)
 
