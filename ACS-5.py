@@ -144,13 +144,8 @@ Output:
             print("________________________________________")
             print(f"Variable: {display_name}")
             print(f"Number of Estimates = {number_of_estimates}")
-            # print(f"Missing Values: {missing_values}")
-            # print(f"Number of Estimate == 0: {zero_estimates}")
             print(f"Percent of Missing Values: {percent_missing_values} ({missing_values} values missing)")
-            # print(f"Estimates zero or missing: {zero_plus_missing}")
             print(f"Percent of Estimates zero or missing: {percent_zero_or_missing} ({zero_estimates} values zero)")
-            # print(f"CVs > 30 = {cv_over_30_count}")
-            # print(f"Number of Estimates not 0 or Missing: {number_of_estimates_not_0_or_missing}") do i need this? 
             print(f"Percent of CVs > 30: {percent_over_30} ({cv_over_30_count} CVs >30)")
             print("________________________________________")
 
