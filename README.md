@@ -8,7 +8,7 @@ The initial function serves as the primary tool for users, facilitating the retr
 
 #### *There are three prerequisites necessary for the proper functioning of the code:*
 
-1. A valid API Key (Insert in Line 79).
+1. A valid API Key (insert in Line 79).
 2. A corresponding shapefile for the requested years.
 3. While not mandatory for the functionality of the functions, possessing a basic understanding of ACS-5 is highly beneficial.
 
