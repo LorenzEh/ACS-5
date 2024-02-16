@@ -98,7 +98,7 @@ Calculating the aggregated CV for each variable in the contiguous USA offers the
 
 This approach has not been included in the function, as it was found, that it tends to give very low CV percentages for large geographies. This could potentially lead users to feel falsely assured when working with ACS-5 data. Therefore, the more conservative method of counting individual CVs over 30 was included. Nonetheless, I included code which you can use to calculate the aggregated CVs.
 
-Lastly, Function 1 created a geo data frame, with the requested columns, and the geography column from the shapefile. As mentioned before, the shapefile has to be downloaded manually and the code needs to be adjusted accordingly (Lines XX-XX)
+Lastly, Function 1 created a geo data frame, with the requested columns, and the geography column from the shapefile. As mentioned before, the shapefile has to be downloaded manually and the code needs to be adjusted accordingly (Lines 174-177)
 
 ## **Function 2**
 
