@@ -21,11 +21,7 @@ Preliminaries:
         1.) Get an ACS API Key
         2.) Download Shapefile. Important: County shapes might change over the years. 
         Therefore, download the right shapefile from https://www2.census.gov/geo/tiger/ and change the code 
-        accordingly: 
-    
-        s = gpd.read_file(r"C:\Users\loren\Desktop\MA alt\Masterarbeit Indien 2\Masterarbeit\Dataframes\Shapefiles\cb_2019_us_county_20m\cb_2019_us_county_20m.shp") # download shapefile and 
-        s["FIPS"] = s["STATEFP"] + s["COUNTYFP"]
-        s = s[["FIPS", "geometry"]]
+        accordingly.
         
 Functionalty & Input:
     
@@ -91,7 +87,7 @@ Output:
             params = {
                 "get": "NAME," + ','.join(all_columns),
                 "for": "county:*",
-                "key": "73f8a9893ed1829820a5f19d3f078b3308871681" # Add your API Key here
+                "key": "ENTER YOUR KEY HERE" 
             }
             response = requests.get(url, params=params)
             if response.status_code == 200:
