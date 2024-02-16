@@ -58,7 +58,12 @@ $$Percent\\ of\\ CVs > 30 = \\frac{Count\\ of\\ CVs > 30}{Count\\ of\\ Estimates
 
 With Count of CVs > 30 being:
 
-$$Count\\ of\\ CVs > 30 = \\sum_{i = 1}^{n}\\left\\{ \\begin{matrix} 1\\ if\\ df\\left[cv\\_ var\\right]_{i} > 30\\\\ 0\\ otherwise \\\\ \\end{matrix} \\right.$$
+$$\text{Count of CVs} > 30 = \sum_{i = 1}^{n}
+\begin{cases}
+1 & \text{if } df\\left[cv\\_ var\\right]_{i} > 30 \\
+0 & \text{otherwise}
+\end{cases}
+$$
 
 And Count of Estimates not zero or missing being:
 
@@ -116,7 +121,7 @@ Call the function on the whole data frame to get a scatterplot matrix and the co
 
 $$Z = \\frac{(x - \\overline{x})}{\\sigma(x)}$$
 
-This involves calculating the standardized values (Z) by subtracting the variable mean (\\overline{x}) from the variable value (x) and dividing it by its standard deviation (\\sigma(x)).
+This involves calculating the standardized values ($Z$) by subtracting the variable mean ($\overline{x}$) from the variable value ($x$) and dividing it by its standard deviation ($\sigma(\text{x}))$.
 
 ### *Output:*
 Scatterplot matrix of the standardized variables.
