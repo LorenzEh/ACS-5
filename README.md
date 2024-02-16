@@ -6,7 +6,7 @@ This project stems from my master’s thesis research, which involved conducting
 
 The initial function serves as the primary tool for users, facilitating the retrieval of county-level data from the ACS-5 API. It provides insights into data quality while seamlessly generating a geoJSON data frame. Function 2 automates the creation of boxplots, offering visual representations of the data's distribution. Function 3 generates a scatterplot matrix, allowing users to explore bivariate relationships among variables. Lastly, function 4 produces basic maps displaying variable values for each county across the contiguous USA, Alaska, Hawaii, and Puerto Rico.
 
-*There are three prerequisites necessary for the proper functioning of the code:*
+#### *There are three prerequisites necessary for the proper functioning of the code:*
 
 1. A valid API Key.
 2. A corresponding shapefile for the requested years.
@@ -77,7 +77,7 @@ The example output shows that the total number of missing values and estimates w
 
 ![Example Image 2](https://github.com/LorenzEh/ACS-5/assets/113586171/5765d82c-54fd-4ac9-a815-430a1818de3b)
 
-*Italicized Text:* It´s possible to calculate aggregated CVs of multiple counties following the procedure outlined in the U.S. Census Bureau's general handbook on data usage by (U.S. Census Bureau, 2020, p. 60):
+It´s possible to calculate aggregated CVs of multiple counties following the procedure outlined in the U.S. Census Bureau's general handbook on data usage by (U.S. Census Bureau, 2020, p. 60):
 
 1. Computing the SE of each estimate:
 
@@ -124,7 +124,10 @@ $$Z = \\frac{(x - \\overline{x})}{\\sigma(x)}$$
 This involves calculating the standardized values ($Z$) by subtracting the variable mean ($\overline{x}$) from the variable value ($x$) and dividing it by its standard deviation ($\sigma(\text{x}))$.
 
 ### *Output:*
-Scatterplot matrix of the standardized variables.
+Scatterplot matrix of the standardized variables, with the distribution of each variable in the diagonale:
+
+![image](https://github.com/LorenzEh/ACS-5/assets/113586171/962bf168-61bc-42a9-b5a1-97f37b7281c0)
+
 
 ## **Function 4**
 
@@ -134,8 +137,20 @@ Create individual maps for the contiguous USA, Alaska, Hawaii, and Puerto Rico.
 ### *Functionality:*
 Call the function with a single variable to get insights of the spatial distribution of the variable. The function will automatically differentiate between the different party of USA and create a map for each of the contiguous parts.
 
+![image](https://github.com/LorenzEh/ACS-5/assets/113586171/dcf25867-8d97-40ce-a322-7e8fca18ae72)
+
+
 ### *Output:*
 Individual maps for contiguous USA, Alaska, Hawaii, and Puerto Rico and a color bar legend.
+
+![map1](https://github.com/LorenzEh/ACS-5/assets/113586171/180e673c-566a-466b-a9fb-5498ec48cbef)
+
+![map2](https://github.com/LorenzEh/ACS-5/assets/113586171/4d76cd5d-6829-4961-951e-524e2dfe394b)
+
+![map3](https://github.com/LorenzEh/ACS-5/assets/113586171/6bf83c42-5f9b-4026-8765-c32bdf35556e)
+
+![map4](https://github.com/LorenzEh/ACS-5/assets/113586171/c73bb2cb-83a7-42b3-9c9c-0d198cdf0a70)
+
 
 ## **Material Used:**
 
