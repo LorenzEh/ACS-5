@@ -168,7 +168,7 @@ Output:
         output_df["Name"] = df["NAME"] 
         
         # Transform to geodataframe (Change as described at the first comment of the function):
-        s = gpd.read_file(r"PATH TO YOUR SHAPEFILE") # download shapefile and 
+        s = gpd.read_file(r"PATH TO YOUR SHAPEFILE") # download shapefile and insert the path here
         s["FIPS"] = s["STATEFP"] + s["COUNTYFP"]
         s = s[["FIPS", "geometry"]]
 
