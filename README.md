@@ -39,7 +39,8 @@ The function takes 5 inputs:
    - Include a list of States to get data from specific states only.
 
 ### *Example Usage:*
-![Example Image](https://github.com/LorenzEh/ACS-5/assets/113586171/0ad0608e-44d1-4bb4-9903-55fdd6cae36f)
+![Example Image](https://github.com/user-attachments/assets/536db0b9-fbf1-455b-9692-47c249e1c959)
+
 
 This example shows how to create the GeoJSON data frame, called “df,” including 4 variables (as mentioned before, the original variable name is followed by the custom name), the MOE, and CV columns for the contiguous USA (the “states” list consists of all states of the contiguous USA).
 
