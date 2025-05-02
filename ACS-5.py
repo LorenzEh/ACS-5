@@ -11,9 +11,9 @@ plt.rcParams['figure.figsize'] = [15, 15]
 # ---------------------------------FUNCTION 1----------------------------------
 # =============================================================================
 
-def fetch_data(year, variables, include_moe_columns=False, include_cv_columns=False, states=None):
+
+def fetch_data(year, variables, include_moe_columns=False, include_cv_columns=False, states=None, spatial=False):
     r"""
-    
 Request data from the ACS-5 API, check the CVs and create a GeoJSON data frame.
         
 Preliminaries:
@@ -32,8 +32,8 @@ Functionalty & Input:
                                      "S1703_C04_001E", "Poverty determined"],       (...)
                         include_moe_columns=True,                                   Set True if MOE columns should be in df
                         include_cv_columns=True,                                    Set True if CV columns should be in df
-                        states = ["01", "02", "03", "04"])                          Include States as a list of strings
-        
+                        states = ["01", "02", "03", "04"],                          Include States as a list of strings
+                        spatial=False)                                              Set True to skip GeoDataFrame conversion
         
 Output:
             
@@ -51,8 +51,9 @@ Output:
             
             
         2.) Data Frame
-        GeoJSON data frame with the columns requested and "Name", "FIPS" and "geometry column".
-"""
+        Returns a GeoJSON data frame (if spatial=False) or a regular DataFrame (if spatial=True)
+        with the columns requested and "Name", "FIPS".
+    """
     try:
         # Extract variable names and display names from the input list
         variable_names = variables[::2]
@@ -72,7 +73,7 @@ Output:
                     "get": "NAME," + ','.join(all_columns),   
                     "for": "county:*",
                     "in": f"state:{state}",
-                    "key": "ENTER YOUR KEY HERE"
+                    "key": "73f8a9893ed1829820a5f19d3f078b3308871681"
                 }
                 response = requests.get(url, params=params)
                 if response.status_code == 200:
@@ -87,7 +88,7 @@ Output:
             params = {
                 "get": "NAME," + ','.join(all_columns),
                 "for": "county:*",
-                "key": "ENTER YOUR KEY HERE" 
+                "key": "73f8a9893ed1829820a5f19d3f078b3308871681" 
             }
             response = requests.get(url, params=params)
             if response.status_code == 200:
@@ -108,7 +109,11 @@ Output:
             cv_var = var.replace("E", "CV")
 
             df[se_var] = df[moe_var] / 1.645
-            df[cv_var] = (df[se_var] / df[var]) * 100
+            
+            # Calculate CV only where the estimate is greater than 0 and SE is not NaN
+            df[cv_var] = np.where((df[var] > 0) & (df[se_var].notna()), 
+                                  (df[se_var] / df[var]) * 100, 
+                                  np.nan)
             df[cv_var].replace([np.inf, -np.inf], np.nan, inplace=True)
             
         rows = len(df)
@@ -136,8 +141,11 @@ Output:
             # Calculate statistics using normal variables 
             number_of_estimates_not_0_or_missing = df[(df[var] != 0) & (~df[var].isnull())].shape[0]
             cv_var = var.replace("E", "CV")
-            cv_over_30_count = df[(df[cv_var] > 30)].shape[0] 
-            percent_over_30 = (cv_over_30_count / number_of_estimates_not_0_or_missing) * 100 
+            if number_of_estimates_not_0_or_missing > 0:
+                cv_over_30_count = df[(df[cv_var] > 30)].shape[0]
+                percent_over_30 = (cv_over_30_count / number_of_estimates_not_0_or_missing) * 100
+            else:
+                percent_over_30 = 0  # Avoid division by zero
             
             print("________________________________________")
             print(f"Variable: {display_name}")
@@ -167,18 +175,21 @@ Output:
         output_df["FIPS"] = df["state"] + df["county"]
         output_df["Name"] = df["NAME"] 
         
-        # Transform to geodataframe (Change as described at the first comment of the function):
-        s = gpd.read_file(r"PATH TO YOUR SHAPEFILE") # download shapefile and insert the path here
-        s["FIPS"] = s["STATEFP"] + s["COUNTYFP"]
-        s = s[["FIPS", "geometry"]]
+        # Add spatial geometry only if requested
+        if spatial:
+            # Update this path to your local shapefile
+            s = gpd.read_file(r"C:\Users\Win10\Desktop\Masterarbeit\Dataframes\Shapefiles\cb_2019_us_county_20m\cb_2019_us_county_20m.shp") 
+            s["FIPS"] = s["STATEFP"] + s["COUNTYFP"]
+            s = s[["FIPS", "geometry"]]
 
-        output_df = pd.merge(output_df, s, on = "FIPS", how='inner')
-        output_df = gpd.GeoDataFrame(output_df, geometry = "geometry")
+            output_df = pd.merge(output_df, s, on="FIPS", how='inner')
+            output_df = gpd.GeoDataFrame(output_df, geometry="geometry")
 
         return output_df
 
     except Exception as e:
         print("An error occurred:", e)
+        return None
         
 # =============================================================================
 # ---------------------------------FUNCTION 2----------------------------------
@@ -359,7 +370,8 @@ df = fetch_data(2019,
                           "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", 
                           "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", 
                           "42", "44", "45", "46", "47", "48", "49", "50", "51", "53", "54", "55", 
-                          "56"])
+                          "56"],
+                spatial = True)  # Set True for a Geodataframe
 
 boxplot(df)
 plot_correlation_matrix(df)
