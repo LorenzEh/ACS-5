@@ -92,7 +92,7 @@ $$SE(\widehat{X}_1 + \widehat{X}_2 + ... + \widehat{X}_n) = \sqrt{ \\
 [ SE(\widehat{X}_2) ]^2 + ... + \\
 [ SE(\widehat{X}_n) ]^2 }$$
 
-3. Calculating the total CV by dividing the aggregated SE with the aggregated estimate ($\hat{X} = \sum\limits_{i = 1}^{n} X_i$) and multiplying it with 100:
+3. Calculating the total CV by dividing the aggregated SE with the aggregated estimate (X̂ = Σ₍ᵢ₌₁₎ⁿ Xᵢ) and multiplying it with 100:
 
 $$CV = \\frac{SE}{\\widehat{X}} \\times 100$$
 
