@@ -1,4 +1,4 @@
-# ***U.S. County-Level Data Retrieval from the ACS-5 API & Basic Data Exploration***
+# ***U.S. County-Level Data Retrieval from the ACS-5 API & Basic Data Exploration*** ![Python](https://img.shields.io/badge/Python-3.8-blue.svg)
 
 This project stems from my master’s thesis research, which involved conducting Exploratory Spatial Data Analysis (ESDA) of county level ACS-5 data. Throughout this process, a significant observation emerged: notable disparities exist in the data quality across various regions and variables. A prevailing trend indicates that sparsely populated counties and more specialized variables tend to exhibit lower data quality. To comprehensively understand data quality, streamline the creation of a geoJSON data frame, and gain insights into variable (spatial) distributions and relationships, four distinct functions were developed.
 
